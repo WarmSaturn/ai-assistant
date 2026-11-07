@@ -13,9 +13,19 @@ def open_target(name):
      
     elif not os.path.exists(path): # فایل روی دیسک نیست
     
-        return "The path doesn't exists."
+        return "The path doesn't exist."
+    
+    try:
+    
+        os.startfile(path)
+    
+    except OSError:
+    
+        return "couldn't be opened."
     
     return path
 
-obj = open_target(" ".join("ai assistent file".lower().split()))    
+obj = open_target(" ".join("ai assistant file".lower().split()))   
+
+print(obj) 
     
