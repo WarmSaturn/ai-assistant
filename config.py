@@ -1,3 +1,3 @@
 ALIASES = {
-    "ai-assistant-file" : r"E:\ai-assistant\ai-assistant.txt"
+    "ai assistant file" : r"E:\ai-assistant\ai-assistant.txt"
 }
