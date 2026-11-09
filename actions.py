@@ -3,17 +3,21 @@ import os
 import config
 
 
+def normalized(name):
+        return " ".join(name.lower().split())
+
 def open_target(name):
+    name = normalized(name)
     # نام ماژول.نام (دیکشنری).تابع(آرگومان)    
     path = config.ALIASES.get(name)
-
+    
     if path is None: # اسمی که کاربر گفته در ALIASES نیست
         
-        return "Try again"
+        return (False,"Try again")
      
     elif not os.path.exists(path): # فایل روی دیسک نیست
     
-        return "The path doesn't exist."
+        return (False,"The path doesn't exist.")
     
     try:
     
@@ -21,11 +25,14 @@ def open_target(name):
     
     except OSError:
     
-        return "couldn't be opened."
+        return (False,"couldn't be opened.")
     
-    return path
+    return (True,path)
 
-obj = open_target(" ".join("ai assistant file".lower().split()))   
+ok,message = open_target("AI Assistant File")   
 
-print(obj) 
+if ok:
+    print(f"Success: {message}")
+else:
+    print(f"Error: {message}")
     
